@@ -5,7 +5,7 @@
 }
 
 html {
-  block-size: 100%;
+  max-block-size: 800px;
 }
 
 .page {
@@ -42,7 +42,7 @@ ol {
   display: grid;
   grid-template-columns: 711px 1fr;
   gap: 30px;
-  margin: 133px 30px;
+  margin: 16.625% 30px;
   max-inline-size: 1140px;
   align-items: end;
 }
@@ -197,11 +197,13 @@ fieldset {
 .search-form__checkbox-list {
   display: flex;
   gap: 15px;
+  align-items: center;
 }
 
 .search-form__label {
   inline-size: fit-content;
   cursor: pointer;
+  align-items: center;
 }
 
 .search-form__pseudo-checkbox {
@@ -210,6 +212,7 @@ fieldset {
   block-size: 19px;
   border: solid 1px white;
   background-color: transparent;
+  position: relative;
 }
 
 .search-form__checkbox:checked+.search-form__pseudo-checkbox::before {
@@ -218,8 +221,10 @@ fieldset {
   block-size: 15px;
   background-color: #fff;
   content: "";
-  margin-left: 1px;
-  margin-right: 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .search-form__label:hover {
