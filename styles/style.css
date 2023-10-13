@@ -5,7 +5,7 @@
 }
 
 html {
-  max-block-size: 900px;
+  block-size: 100%;
 }
 
 .page {
