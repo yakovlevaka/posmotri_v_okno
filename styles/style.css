@@ -44,6 +44,7 @@ ol {
   gap: 30px;
   margin: 20% 30px;
   max-inline-size: 1140px;
+  max-block-size:800px;
   align-items: end;
 }
 
