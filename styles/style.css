@@ -47,10 +47,19 @@ ol {
   max-block-size:800px;
   align-items: end;
 }
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
 
 .content__list {
   position: relative;
-  block-size: 298px;
+  block-size: 300px;
   overflow-y: auto;
 }
 
@@ -120,7 +129,7 @@ ol {
 }
 
 .title {
-  padding-block-end: 26px;
+  padding-block-end: 24px;
   font-size: 75px;
   font-weight: 700;
   font-family: Oswald, sans-serif;
@@ -151,16 +160,6 @@ ol {
   font-size: 18px;
   font-family: Fira Sans Condensed;
   line-height: 0.9;
-}
-
-.visually-hidden {
-  position: absolute;
-  inline-size: 1px;
-  block-size: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 
 fieldset {
@@ -232,7 +231,7 @@ fieldset {
   content: "";
 }
 
-.search-form__label:hover {
+.search-form__label:focus {
   outline: none;
   outline-offset: none;
 }
@@ -242,7 +241,7 @@ fieldset {
   outline-offset: 2px;
 }
 
-.search-form__label-text:hover {
+.search-form__label:hover {
   text-decoration: underline;
 }
 
