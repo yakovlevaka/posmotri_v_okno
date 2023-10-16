@@ -9,8 +9,10 @@ html {
 }
 
 .page {
+  display:grid;
+  place-items: center;
   inline-size: 1200px;
-  max-block-size: 800px;
+  block-size: 100%;
   margin: auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
@@ -37,16 +39,6 @@ ul,
 ol {
   list-style: none;
 }
-
-.content {
-  display: grid;
-  grid-template-columns: 711px 1fr;
-  gap: 30px;
-  margin: 20% 30px;
-  max-inline-size: 1140px;
-  max-block-size:800px;
-  align-items: end;
-}
 .visually-hidden {
   position: absolute;
   inline-size: 1px;
@@ -56,9 +48,14 @@ ol {
   clip-path: inset(50%);
   white-space: nowrap;
 }
-
+.content {
+  display: grid;
+  grid-template-columns: 711px 1fr;
+  gap: 30px;
+  max-inline-size: 1140px;
+  align-items: end;
+}
 .content__list {
-  position: relative;
   block-size: 300px;
   overflow-y: auto;
 }
@@ -66,6 +63,10 @@ ol {
 .content__details {
   block-size: 100%;
   inline-size: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap:26px;
 }
 
 .content__list::-webkit-scrollbar {
@@ -83,7 +84,9 @@ ol {
 }
 
 .result__video-container {
-  position: relative;
+  inline-size:711px;
+  block-size:386px;
+  margin-block-end:16px;
 }
 
 .result__video {
@@ -93,41 +96,41 @@ ol {
 }
 
 .search-form {
-  margin-block-start: 16px;
   display: flex;
   justify-content: space-between;
   align-items: start;
+  gap:26px;
+  inline-size: 100%;
+  block-size: 100%;
 }
-
 .content__list-item {
   margin-block-end: 30px;
 }
-
 .content__list-item:not(:last-child) {
   margin-block-end: none;
 }
-
+.content__video-card-description-container {
+  flex-grow:1;
+}
 .content__video-card {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
 }
-
 .content__video-card-thumbnail {
-  inline-size: 194px;
+  min-inline-size: 194px;
   block-size: 103px;
   object-fit: cover;
-  object-position: 50% 50%;
+  object-position: center;
 }
-
+.search-form__fieldset {
+  border: none;
+}
 .search-form__fieldset-title {
   font-size: 18px;
   font-weight: 400;
   line-height: 1.2;
-  padding-block-end: 7.5px;
-
+  margin-block-end: 7.5px;
 }
-
 .title {
   padding-block-end: 24px;
   font-size: 75px;
@@ -162,14 +165,11 @@ ol {
   line-height: 0.9;
 }
 
-fieldset {
-  border: none;
-}
-
 .search-form__textfield {
   appearance: none;
   min-inline-size: 225px;
   min-block-size: 27px;
+  border:none;
   border-width: 1px 0px 1px 0px;
   border-style: solid;
   border-color: #FFFFFF;
@@ -193,28 +193,23 @@ fieldset {
 }
 .search-form__textfield:focus {
   outline: none;
-  outline-offset: none;
-}
-
-.search-form__textfield:has(:focus-visible) {
-  outline: 1px;
-  outline-offset: 2px;
 }
 
 .search-form__checkbox-list {
   display: flex;
   gap: 15px;
-  align-items: center;
 }
 
 .search-form__label {
+  display:flex;
+  align-items: center;
+  gap:5px;
   inline-size: fit-content;
   cursor: pointer;
-  align-items: center;
 }
 
 .search-form__pseudo-checkbox {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   inline-size: 19px;
@@ -223,12 +218,11 @@ fieldset {
   background-color: transparent;
 }
 
-.search-form__checkbox:checked+.search-form__pseudo-checkbox::before {
-  display: block;
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after { 
   inline-size: 15px;
   block-size: 15px;
   background-color: #fff;
-  content: "";
+  content: '';
 }
 
 .search-form__label:focus {
@@ -237,11 +231,10 @@ fieldset {
 }
 
 .search-form__label:has(:focus-visible) {
-  outline: 1px;
-  outline-offset: 2px;
+  outline: 1px solid white;
 }
 
-.search-form__label:hover {
+.search-form__label:hover .search-form__label-text {
   text-decoration: underline;
 }
 
@@ -251,7 +244,6 @@ button {
   background-color: transparent;
   color: #FFFFFF;
   border: solid 1px currentColor;
-  font-family: Fira Sans Condensed, sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 1.2;
@@ -266,17 +258,21 @@ button:active {
 }
 
 button:focus {
-  outline: 1px;
-  outline-offset: 2px;
+  outline:none
 }
 
+button:focus-visible {
+  outline: 1px solid white;
+}
 .more-button {
   inline-size: 100%;
+  min-block-size:34px;
 }
 
 .search-form__submit-button {
   inline-size: 194px;
   align-self: self-end;
+  min-block-size:34px;
 }
 
 .content__card-link_current {
@@ -285,11 +281,11 @@ button:focus {
 
 .content__card-link:focus {
   outline: none;
-  outline-offset: none;
 }
 
 .content__card-link:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .content__card-link:active {
@@ -297,7 +293,5 @@ button:focus {
 }
 
 .content__card-link:focus-visible {
-  outline: 1px;
-  outline-offset: 2px;
-  outline-color: #fff;
+  outline: 1px solid white;
 }
